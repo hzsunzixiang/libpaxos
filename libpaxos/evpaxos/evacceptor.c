@@ -159,6 +159,7 @@ evacceptor_init(int id, const char* config_file, struct event_base* base)
 		evpaxos_config_free(config);
 		return NULL;
 	}
+    paxos_log_info("acceptor_count:.......%d", acceptor_count);
 
 	struct peers* peers = peers_new(base, config);
 	int port = evpaxos_acceptor_listen_port(config, id);

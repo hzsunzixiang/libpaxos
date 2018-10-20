@@ -54,6 +54,7 @@ deliver(unsigned iid, char* value, size_t size, void* arg)
 	struct client_value* val = (struct client_value*)value;
 	printf("%ld.%06d [%.16s] %ld bytes\n", val->t.tv_sec, val->t.tv_usec,
 		val->value, (long)val->size);
+	fflush(stdin);
 }
 
 static void

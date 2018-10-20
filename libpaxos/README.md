@@ -83,3 +83,8 @@ by [Daniele Sciascia][8].
 [8]: http://atelier.inf.usi.ch/~sciascid
 [9]: http://www.msgpack.org
 [10]: http://symas.com/mdb/
+
+
+
+要想调试 直接在当前目录执行 
+cmake -DCMAKE_BUILD_TYPE=Debug

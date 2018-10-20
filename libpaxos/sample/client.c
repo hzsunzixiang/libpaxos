@@ -160,7 +160,10 @@ on_connect(struct bufferevent* bev, short events, void* arg)
 	if (events & BEV_EVENT_CONNECTED) {
 		printf("Connected to proposer\n");
 		for (i = 0; i < c->outstanding; ++i)
+		{
+		    paxos_log_info("will client_submit_value");
 			client_submit_value(c);
+		}
 	} else {
 		printf("%s\n", evutil_socket_error_to_string(EVUTIL_SOCKET_ERROR()));
 	}
@@ -198,6 +201,8 @@ make_client(const char* config, int proposer_id, int outstanding, int value_size
 		exit(1);
 	
 	c->id = rand();
+	paxos_log_info("call rand");
+
 	c->value_size = value_size;
 	c->outstanding = outstanding;
 	c->send_buffer = malloc(sizeof(struct client_value) + value_size);
